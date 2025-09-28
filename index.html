@@ -1,0 +1,129 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <title>Generative AI Opinions – 3D Asteroid Field</title>
+  <link rel="stylesheet" href="style.css" />
+</head>
+<body>
+  <canvas id="bg"></canvas>
+
+  <div id="hud">
+    <h1>Generative Artificial Intelligence Tools</h1>
+    <p class="sub">Fly through the asteroid field and collect my opinions by destroying asteroids.</p>
+    <p class="controls">
+      Mouse: fine aim • W/S: pitch • A/D: yaw • Q/E: roll • Shift: forward • Ctrl: backward •
+      R/F: local up/down • Z/C: local left/right • Space: shoot • Esc: settings
+    </p>
+    <div id="lockHint">Click anywhere to lock the mouse</div>
+    <div id="score">Collected: 0 / 7</div>
+  </div>
+
+  <div id="messageBox"><p id="messageText"></p></div>
+
+  <div id="win" class="hidden">
+    <div class="panel">
+      <h2>You collected all opinions!</h2>
+      <div id="opinionListWrap">
+        <ul id="opinionList"></ul>
+      </div>
+      <div class="buttons">
+        <button id="restartBtn">Play again</button>
+        <button id="viewPaperBtn">View full paper</button>
+      </div>
+    </div>
+  </div>
+
+  <!-- Settings Panel -->
+  <div id="settings" class="hidden">
+    <div class="panel">
+      <h3>Settings</h3>
+
+      <label>
+        Mouse Sensitivity
+        <input id="mouseSens" type="range" min="0.0001" max="0.006" step="0.0001" value="0.0012">
+        <span id="mouseSensVal">0.0012</span>
+      </label>
+
+      <label>
+        Key Rotation Speed (rad/s)
+        <input id="keyRot" type="range" min="0.01" max="1.0" step="0.01" value="0.08">
+        <span id="keyRotVal">0.08</span>
+      </label>
+
+      <label>
+        Thrust (u/s²)
+        <input id="thrust" type="range" min="6" max="40" step="1" value="18">
+        <span id="thrustVal">18</span>
+      </label>
+
+      <label>
+        Linear Damping (/s)
+        <input id="linDamp" type="range" min="0.1" max="2" step="0.01" value="0.6">
+        <span id="linDampVal">0.60</span>
+      </label>
+
+      <label>
+        Angular Damping (/s)
+        <input id="angDamp" type="range" min="0.2" max="6" step="0.1" value="3">
+        <span id="angDampVal">3.0</span>
+      </label>
+
+      <label>
+        Max Speed (u/s)
+        <input id="maxSpeed" type="range" min="40" max="200" step="5" value="120">
+        <span id="maxSpeedVal">120</span>
+      </label>
+
+      <label>
+        Strafe Speed (u/s)
+        <input id="strafe" type="range" min="2" max="40" step="1" value="12">
+        <span id="strafeVal">12</span>
+      </label>
+
+      <label>
+        Star Size Near
+        <input id="star1" type="range" min="0.5" max="5" step="0.1" value="1.8">
+        <span id="star1Val">1.8</span>
+      </label>
+
+      <label>
+        Star Size Far
+        <input id="star2" type="range" min="0.5" max="6" step="0.1" value="2.6">
+        <span id="star2Val">2.6</span>
+      </label>
+
+      <p class="hint">Tip: Press <strong>Esc</strong> to unlock the mouse and adjust settings. Click the canvas to resume.</p>
+      <button id="closeSettings">Close</button>
+    </div>
+  </div>
+
+  <!-- Paper View -->
+  <div id="paperView" class="hidden">
+    <div class="paper">
+      <h1>Generative Artificial Intelligence Tools: Promise, Concern, and the Path Ahead</h1>
+
+      <p>Generative AI tools have arrived with the energy of a new power tool in a busy workshop. They can accelerate what we already do, open up techniques that used to be out of reach, and help us explore ideas faster than our schedules would ever allow. At the same time, they can tempt us to outsource thinking, blur ownership of creative work, and concentrate power in ways that raise real ethical questions. What follows is a clear account of where I stand today: the promise I see, the concerns I carry, how I expect the technology to evolve, and what boundaries we should draw as it weaves into daily life.</p>
+
+      <p>My current view treats these systems as tools rather than replacements for human work—no different in spirit from how electric tools changed craft without eliminating craftspeople. I’m excited about what they can do in research and other time-consuming fields, especially when a weeks-long grind can be compressed into days. Still, I worry we’ll stop treating them as tools and let them do too much. Skills atrophy when they aren’t used, and some of those skills—careful reading, methodical problem solving, judgment—are harder to rebuild than we admit. I’m also concerned that AI could widen the gap between people who know how to use it and those who don’t, much like the early years of personal computing created a divide between the digitally fluent and everyone else.</p>
+
+      <p>Looking ahead five to ten years, I expect steady increases in capability and a practical solution to limits on memory and context. Some models will prioritize speed; others will “think” longer to deliver higher-quality results. We’ll interact with AI through new forms—wearables like glasses, ambient assistants, and interfaces we haven’t yet imagined. I also expect breakthroughs in material science, where fast simulation and synthesis can help design the next generation of technology. The arts won’t be untouched: as design and video generation improve, we’ll need to deliberately value human creativity and taste—not as a nostalgic indulgence, but as a central reason to keep people in the loop.</p>
+
+      <p>Ethically, my concerns begin with skill loss. If AI handles too much of our thinking, we’ll stop exercising the muscles that do it. That decline won’t always look dramatic; it may present as hesitation, as a quiet unwillingness to wrestle with a hard paragraph or a tricky bug because a tool can do it for us. Intellectual-property questions are close behind. If an AI learns from something I wrote and then generates work informed by it, what do I own? At a minimum, credit matters, and so does the ability to opt out of training data. The broader environment will also be harder to trust. We already verify more than we used to because not everything online is reliable; AI may widen that gap, increasing our verification workload just to establish what’s real.</p>
+
+      <p>As these systems deepen their reach, new ethical challenges will emerge. A super-capable system with long memory would be difficult to control. In education, bans alone won’t keep AI out, and they’ll leave students unprepared for the world they’re entering. Learners should be taught how to use AI as a tool rather than a crutch, much the way math starts by hand and then introduces calculators. Accountability needs similar care. If an AI winds up in a critical system—imagine a nuclear facility—who is responsible when something fails? The more we automate, the more explicit our lines of responsibility must become.</p>
+
+      <p>Privacy and governance are two areas where my caution is strongest. Digital privacy is already fragile; as AI gets better at pattern-matching and inference, keeping anything private without structural changes will be nearly impossible. We’ll need technical safeguards and legal limits to curb surveillance creep and protect the right to be left alone. Government is another red line: AI should not single-handedly make decisions that affect large groups of people. Use it to analyze, forecast, and surface options; do not let it become the decider. Human accountability has to remain in the loop.</p>
+
+      <p>All of this points toward a path that balances ambition with restraint. Push the tools where they shine—research acceleration, discovery in the sciences, and creative exploration—while staying honest about the tradeoffs. Guard the skills that make us human, uphold clear rules for ownership and consent, and design institutions that keep human responsibility front and center. Do that well, and AI remains what it should be: a powerful set of instruments that extend human capability rather than replace it.</p>
+
+      <div class="paper-nav">
+        <button id="backToGame">Back to game</button>
+      </div>
+    </div>
+  </div>
+
+  <script src="https://cdn.jsdelivr.net/npm/three@0.160.0/build/three.min.js"></script>
+  <script src="script.js"></script>
+</body>
+</html>
